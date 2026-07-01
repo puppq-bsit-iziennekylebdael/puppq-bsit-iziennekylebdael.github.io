@@ -1,0 +1,1532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Izienne Kyle B. Dael — Portfolio</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/devicon.min.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ============================================
+       1. ROOT VARIABLES — Theme tokens
+       ============================================ */
+    :root {
+      /* Light "creamy" theme (default) */
+      --bg:           #fdf3ee;
+      --bg-blob-1:    #fbe7e2;   /* blush */
+      --bg-blob-2:    #fdf0c8;   /* butter yellow */
+      --bg-blob-3:    #e3f0e1;   /* matcha green */
+      --card:         #ffffff;
+      --text-main:    #5a4a47;
+      --text-soft:    #9c8580;
+
+      --red:          #e8635c;
+      --red-soft:     #f3938c;
+      --red-deep:     #d44d47;
+      --red-glow:     rgba(232, 99, 92, 0.25);
+      --pink-glow:    rgba(243, 147, 140, 0.32);
+
+      --yellow:       #f3c969;
+      --yellow-soft:  #fbe6ad;
+      --yellow-deep:  #d9a83f;
+
+      --green:        #9bc6a3;
+      --green-soft:   #cfe8d2;
+      --green-deep:   #6fa67d;
+
+      --tag-bg:       var(--bg-blob-1);
+
+      --font-display: "Quicksand", sans-serif;
+      --font-body:    "Nunito", sans-serif;
+
+      --radius-lg: 28px;
+      --radius-md: 18px;
+      --radius-pill: 999px;
+      --max-width: 1080px;
+      --section-pad: clamp(60px, 9vw, 110px);
+    }
+
+    /* "Twilight" dark mode overrides */
+    body.dark-mode {
+      --bg:           #2c1f33;
+      --bg-blob-1:    #3b2a44;
+      --bg-blob-2:    #423255;
+      --bg-blob-3:    #34283f;
+      --card:         #382a42;
+      --text-main:    #f6ece8;
+      --text-soft:    #cdb8c4;
+
+      --red:          #f0827b;
+      --red-soft:     #f3a09a;
+      --red-deep:     #ffb3ac;
+      --red-glow:     rgba(240, 130, 123, 0.28);
+      --pink-glow:    rgba(243, 160, 154, 0.3);
+
+      --yellow:       #f6d486;
+      --yellow-soft:  #5a4a3a;
+      --yellow-deep:  #f6d486;
+
+      --green:        #a9d6b3;
+      --green-soft:   #3a4a40;
+      --green-deep:   #a9d6b3;
+
+      --tag-bg:       #43334e;
+    }
+
+    /* ============================================
+       2. RESET & BASE
+       ============================================ */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text-main);
+      font-family: var(--font-body);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      transition: background-color 0.5s ease, color 0.5s ease;
+    }
+
+    /* Ambient background blobs */
+    .bg-blobs {
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      pointer-events: none;
+      transition: opacity 0.5s ease;
+    }
+
+    .bg-blobs span {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(60px);
+      opacity: 0.55;
+      transition: background-color 0.5s ease;
+    }
+
+    .bg-blobs span:nth-child(1) {
+      top: -10%; left: -8%;
+      width: 38vw; height: 38vw;
+      background-color: var(--bg-blob-1);
+    }
+
+    .bg-blobs span:nth-child(2) {
+      top: 12%; right: -10%;
+      width: 32vw; height: 32vw;
+      background-color: var(--bg-blob-2);
+    }
+
+    .bg-blobs span:nth-child(3) {
+      bottom: -12%; left: 18%;
+      width: 40vw; height: 40vw;
+      background-color: var(--bg-blob-3);
+    }
+
+    .bg-blobs span:nth-child(4) {
+      bottom: 30%; right: 5%;
+      width: 22vw; height: 22vw;
+      background-color: var(--bg-blob-1);
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    img { max-width: 100%; display: block; }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Visible keyboard focus states */
+    a:focus-visible,
+    button:focus-visible,
+    input:focus-visible,
+    textarea:focus-visible {
+      outline: 2px solid var(--red);
+      outline-offset: 3px;
+      border-radius: 8px;
+    }
+
+    /* ============================================
+       3. SECTION HEADINGS
+       ============================================ */
+    .eyebrow {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 10px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: clamp(1.9rem, 4.5vw, 2.7rem);
+      letter-spacing: -0.01em;
+      margin-bottom: 14px;
+      color: var(--text-main);
+    }
+
+    .section-intro {
+      max-width: 600px;
+      color: var(--text-soft);
+      margin-bottom: 50px;
+      font-size: 1.05rem;
+    }
+
+    section {
+      padding: var(--section-pad) 0;
+      position: relative;
+      scroll-margin-top: 90px;
+    }
+
+    .section-header {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* ============================================
+       4. NAVIGATION
+       ============================================ */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 18px 0;
+    }
+
+    .nav-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 12px 18px 12px 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: color-mix(in srgb, var(--card) 70%, transparent);
+      backdrop-filter: blur(14px);
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      box-shadow: 0 8px 30px var(--red-glow);
+      transition: background-color 0.5s ease, box-shadow 0.5s ease;
+    }
+
+    .nav-logo {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.15rem;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .nav-logo i {
+      color: var(--red);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 0.92rem;
+      color: var(--text-soft);
+      transition: color 0.25s ease;
+      position: relative;
+      padding-bottom: 4px;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 50%; bottom: -2px;
+      width: 0;
+      height: 3px;
+      border-radius: var(--radius-pill);
+      background-color: var(--red);
+      transform: translateX(-50%);
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--red);
+    }
+
+    .nav-links a.active {
+      color: var(--red-deep);
+    }
+
+    .nav-links a.active::after {
+      width: 100%;
+    }
+
+    .theme-toggle {
+      width: 42px; height: 42px;
+      border-radius: 50%;
+      border: none;
+      background-color: var(--bg-blob-2);
+      color: var(--yellow-deep);
+      font-size: 1.05rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      flex-shrink: 0;
+      cursor: pointer;
+    }
+
+    .theme-toggle:hover {
+      transform: rotate(20deg) scale(1.1);
+      box-shadow: 0 6px 18px var(--red-glow);
+    }
+
+    .theme-toggle .fa-sun { display: inline-block; }
+    .theme-toggle .fa-moon { display: none; }
+    body.dark-mode .theme-toggle .fa-sun { display: none; }
+    body.dark-mode .theme-toggle .fa-moon { display: inline-block; }
+
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+    }
+
+    .nav-toggle span {
+      display: block;
+      width: 22px;
+      height: 3px;
+      background: var(--red);
+      border-radius: 4px;
+      transition: all 0.25s ease;
+    }
+
+    .mobile-menu {
+      max-width: var(--max-width);
+      margin: 10px auto 0;
+      padding: 0 28px;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+    }
+
+    .mobile-menu.is-open {
+      max-height: 280px;
+    }
+
+    .mobile-menu-inner {
+      background-color: var(--card);
+      backdrop-filter: blur(14px);
+      border-radius: var(--radius-md);
+      padding: 8px;
+      box-shadow: 0 8px 30px var(--red-glow);
+    }
+
+    .mobile-menu a {
+      display: block;
+      padding: 14px 20px;
+      font-family: var(--font-display);
+      font-weight: 600;
+      color: var(--text-main);
+      border-radius: var(--radius-md);
+      transition: background-color 0.2s ease, color 0.2s ease;
+    }
+
+    .mobile-menu a:hover,
+    .mobile-menu a.active {
+      background-color: var(--bg-blob-1);
+      color: var(--red);
+    }
+
+    /* ============================================
+       5. HERO SECTION — Clean & Steady Circle Photo
+       ============================================ */
+    .hero {
+      padding-top: clamp(50px, 8vw, 90px);
+    }
+
+    .hero-inner {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .hero-photo-wrap {
+      position: relative;
+      width: 240px;
+      height: 240px;
+      flex-shrink: 0;
+      justify-self: center;
+    }
+
+    .hero-photo-wrap::before {
+      content: "";
+      position: absolute;
+      top: -15px; left: -15px; right: -15px; bottom: -15px;
+      background: linear-gradient(135deg, var(--red-soft), var(--red));
+      filter: blur(28px);
+      opacity: 0.45;
+      z-index: -1;
+      border-radius: 50%;
+    }
+
+    .hero-photo {
+      width: 240px;
+      height: 240px;
+      object-fit: cover;
+      border: 6px solid var(--card);
+      border-radius: 50%;
+      box-shadow:
+        0 0 0 4px var(--bg-blob-1),
+        0 20px 50px var(--pink-glow);
+      animation: floatUp 0.9s ease-out;
+      transition: box-shadow 0.5s ease, border-color 0.5s ease;
+    }
+
+    @keyframes floatUp {
+      from { opacity: 0; transform: translateY(16px) scale(0.95); }
+      to   { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    .hero-text .eyebrow,
+    .hero-name,
+    .hero-headline,
+    .hero-buttons,
+    .social-row {
+      animation: fadeUp 0.7s ease-out both;
+    }
+
+    .hero-text .eyebrow   { animation-delay: 0.05s; }
+    .hero-name            { animation-delay: 0.1s; }
+    .hero-headline        { animation-delay: 0.15s; }
+    .hero-buttons         { animation-delay: 0.2s; }
+    .social-row           { animation-delay: 0.25s; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(14px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-name {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: clamp(2.1rem, 5.5vw, 3.4rem);
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+      margin-bottom: 14px;
+      color: var(--text-main);
+    }
+
+    .hero-name .accent {
+      color: var(--red);
+      position: relative;
+      display: inline-block;
+    }
+
+    .hero-name .accent::after {
+      content: "";
+      position: absolute;
+      left: 0; bottom: -6px;
+      width: 100%;
+      height: 10px;
+      background: var(--red-soft);
+      opacity: 0.35;
+      border-radius: var(--radius-pill);
+      z-index: -1;
+    }
+
+    .hero-headline {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text-soft);
+      margin-bottom: 32px;
+      min-height: 1.6em;
+      font-family: var(--font-display);
+      display: flex;
+      align-items: center;
+      gap: 2px;
+    }
+
+    .typing-text {
+      color: var(--red-deep);
+    }
+
+    .typing-cursor {
+      display: inline-block;
+      width: 2px;
+      height: 1.1em;
+      background-color: var(--red);
+      margin-left: 4px;
+      animation: blink 0.9s step-end infinite;
+    }
+
+    @keyframes blink {
+      0%, 49%  { opacity: 1; }
+      50%, 100% { opacity: 0; }
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    /* ============================================
+       6. BUTTONS
+       ============================================ */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 0.98rem;
+      padding: 16px 36px;
+      border-radius: var(--radius-pill);
+      border: none;
+      cursor: pointer;
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease, background-color 0.25s ease, color 0.25s ease;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--red-soft), var(--red));
+      color: #ffffff;
+      box-shadow: 0 10px 30px var(--red-glow);
+    }
+
+    .btn-primary:hover {
+      transform: scale(1.05) translateY(-2px);
+      box-shadow: 0 14px 38px var(--pink-glow);
+    }
+
+    .btn-primary:active { transform: scale(0.98); }
+
+    .btn-outline {
+      background-color: var(--card);
+      color: var(--red);
+      border: 2px solid var(--bg-blob-1);
+    }
+
+    .btn-outline:hover {
+      transform: scale(1.04) translateY(-2px);
+      border-color: var(--red-soft);
+      box-shadow: 0 12px 30px var(--pink-glow);
+    }
+
+    .btn-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 0.82rem;
+      padding: 9px 18px;
+      border-radius: var(--radius-pill);
+      border: 2px solid transparent;
+      cursor: pointer;
+      transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease, background-color 0.25s ease;
+    }
+
+    .btn-chip-code {
+      background-color: var(--bg-blob-1);
+      color: var(--red-deep);
+    }
+
+    .btn-chip-code:hover {
+      background: linear-gradient(135deg, var(--red-soft), var(--red));
+      color: #ffffff;
+      transform: translateY(-3px) scale(1.03);
+      box-shadow: 0 10px 22px var(--pink-glow);
+    }
+
+    .btn-chip-demo {
+      background-color: var(--bg-blob-3);
+      color: var(--green-deep);
+    }
+
+    .btn-chip-demo:hover {
+      background: linear-gradient(135deg, var(--green-soft), var(--green));
+      color: var(--text-main);
+      transform: translateY(-3px) scale(1.03);
+      box-shadow: 0 10px 22px rgba(155, 198, 163, 0.35);
+    }
+
+    /* ============================================
+       7. SOCIAL ICON ROW
+       ============================================ */
+    .social-row {
+      display: flex;
+      gap: 14px;
+      margin-top: 30px;
+      flex-wrap: wrap;
+    }
+
+    .social-icon {
+      width: 46px;
+      height: 46px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: var(--card);
+      border: 1px solid var(--bg-blob-1);
+      border-radius: 50%;
+      font-size: 1.05rem;
+      color: var(--red-soft);
+      box-shadow: 0 6px 16px var(--red-glow);
+      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .social-icon:hover {
+      color: #ffffff;
+      background: linear-gradient(135deg, var(--red-soft), var(--red));
+      transform: translateY(-5px) scale(1.08);
+      box-shadow: 0 12px 26px var(--pink-glow);
+    }
+
+    /* ============================================
+       8. CARD BASE
+       ============================================ */
+    .card {
+      background-color: var(--card);
+      border-radius: var(--radius-lg);
+      box-shadow: 0 14px 40px var(--red-glow);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      transition: transform 0.35s ease, box-shadow 0.35s ease, background-color 0.5s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 22px 50px var(--pink-glow);
+    }
+
+    /* ============================================
+       9. ABOUT SECTION
+       ============================================ */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 32px;
+      align-items: start;
+    }
+
+    .about-main {
+      padding: 36px;
+    }
+
+    .about-main p {
+      margin-bottom: 18px;
+      color: var(--text-soft);
+      font-size: 1.04rem;
+    }
+
+    .about-main p:last-child { margin-bottom: 0; }
+
+    .about-main strong {
+      color: var(--red-deep);
+      font-weight: 700;
+    }
+
+    .about-main h3 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--text-main);
+      margin: 26px 0 14px;
+    }
+
+    .tech-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .tech-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 0.88rem;
+      padding: 10px 18px 10px 14px;
+      border-radius: var(--radius-pill);
+      background-color: var(--tag-bg);
+      color: var(--text-main);
+      transition: all 0.25s ease;
+    }
+
+    .tech-pill:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 22px var(--red-glow);
+    }
+
+    .tech-pill.tech-red i    { color: var(--red); }
+    .tech-pill.tech-yellow i { color: var(--yellow-deep); }
+    .tech-pill.tech-green i  { color: var(--green-deep); }
+
+    .tech-pill.tech-red    { background-color: color-mix(in srgb, var(--red) 14%, var(--tag-bg)); }
+    .tech-pill.tech-yellow { background-color: color-mix(in srgb, var(--yellow) 22%, var(--tag-bg)); }
+    .tech-pill.tech-green  { background-color: color-mix(in srgb, var(--green) 22%, var(--tag-bg)); }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .tag {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 0.85rem;
+      padding: 9px 20px;
+      border-radius: var(--radius-pill);
+      transition: all 0.25s ease;
+    }
+
+    .tag-red    { background-color: color-mix(in srgb, var(--red) 14%, var(--tag-bg));    color: var(--red-deep); }
+    .tag-yellow { background-color: color-mix(in srgb, var(--yellow) 26%, var(--tag-bg)); color: var(--yellow-deep); }
+    .tag-green  { background-color: color-mix(in srgb, var(--green) 26%, var(--tag-bg));  color: var(--green-deep); }
+
+    .tag:hover { transform: translateY(-2px); }
+
+    .side-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    .side-card { padding: 32px; }
+
+    .side-card h3 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--text-main);
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .side-card h3 i {
+      color: var(--red);
+      background-color: var(--bg-blob-1);
+      width: 38px; height: 38px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.95rem;
+      flex-shrink: 0;
+    }
+
+    .fact-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .fact-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      color: var(--text-soft);
+      font-size: 0.98rem;
+    }
+
+    .fact-list i {
+      color: var(--green-deep);
+      margin-top: 4px;
+      width: 18px;
+      flex-shrink: 0;
+    }
+
+    .roadmap-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .roadmap-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      color: var(--text-soft);
+      font-size: 0.98rem;
+    }
+
+    .roadmap-num {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 0.85rem;
+      color: var(--yellow-deep);
+      background-color: var(--bg-blob-2);
+      width: 30px; height: 30px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+
+    /* ============================================
+       10. PROJECTS SECTION
+       ============================================ */
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 28px;
+    }
+
+    .project-card {
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .project-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, var(--bg-blob-1), var(--bg-blob-2));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--red);
+      font-size: 1.4rem;
+      margin-bottom: 22px;
+      transition: transform 0.35s ease;
+    }
+
+    .project-card:hover .project-icon { transform: rotate(-8deg) scale(1.08); }
+
+    .project-card h3 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.18rem;
+      margin-bottom: 12px;
+      color: var(--text-main);
+    }
+
+    .project-card p {
+      color: var(--text-soft);
+      font-size: 0.97rem;
+      flex-grow: 1;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 22px;
+      padding-top: 18px;
+      border-top: 1px dashed var(--bg-blob-1);
+    }
+
+    .project-tag {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 0.75rem;
+      padding: 5px 13px;
+      border-radius: var(--radius-pill);
+    }
+
+    .project-actions {
+      display: flex;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    /* ============================================
+       11. CONTACT SECTION
+       ============================================ */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.3fr;
+      gap: 28px;
+    }
+
+    .contact-info-card {
+      padding: 36px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .contact-info-card h3,
+    .contact-form h3 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.15rem;
+      margin-bottom: 14px;
+      color: var(--text-main);
+    }
+
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 14px 0;
+      transition: padding-left 0.25s ease;
+      color: var(--text-soft);
+    }
+
+    .contact-link:hover {
+      padding-left: 8px;
+      color: var(--red-deep);
+    }
+
+    .contact-link i {
+      width: 44px; height: 44px;
+      display: flex; align-items: center; justify-content: center;
+      background-color: var(--bg-blob-1);
+      border-radius: 50%;
+      color: var(--red);
+      font-size: 1.05rem;
+      flex-shrink: 0;
+      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .contact-link:hover i {
+      background: linear-gradient(135deg, var(--red-soft), var(--red));
+      color: #ffffff;
+      transform: scale(1.1) rotate(-6deg);
+    }
+
+    .contact-link .label {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--text-soft);
+      font-family: var(--font-display);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 2px;
+      opacity: 0.7;
+    }
+
+    .contact-link .value {
+      color: var(--text-main);
+      font-weight: 700;
+      font-size: 1.02rem;
+    }
+
+    .contact-link:hover .value { color: var(--red-deep); }
+
+    .contact-divider {
+      border: none;
+      border-top: 1px dashed var(--bg-blob-1);
+      margin: 4px 0;
+    }
+
+    .contact-form {
+      padding: 36px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .form-group label {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 0.85rem;
+      color: var(--text-main);
+    }
+
+    .form-group input,
+    .form-group textarea {
+      background-color: var(--bg);
+      border: 2px solid var(--bg-blob-1);
+      border-radius: var(--radius-md);
+      padding: 14px 18px;
+      color: var(--text-main);
+      font-family: var(--font-body);
+      font-weight: 500;
+      font-size: 0.97rem;
+      transition: border-color 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--red-soft);
+      background-color: var(--card);
+      box-shadow: 0 0 0 4px var(--red-glow);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 130px;
+    }
+
+    .form-submit {
+      align-self: flex-start;
+      margin-top: 4px;
+    }
+
+    .form-status {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--red-deep);
+      font-family: var(--font-display);
+      min-height: 1.2em;
+    }
+
+    /* ============================================
+       12. SCROLL-TO-TOP BUTTON
+       ============================================ */
+    .scroll-top-btn {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      border: none;
+      background: linear-gradient(135deg, var(--red-soft), var(--red));
+      color: #ffffff;
+      font-size: 1.15rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 10px 28px var(--pink-glow);
+      z-index: 90;
+      opacity: 0;
+      transform: translateY(20px) scale(0.8);
+      pointer-events: none;
+      cursor: pointer;
+      transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+    }
+
+    .scroll-top-btn.is-visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      pointer-events: auto;
+    }
+
+    .scroll-top-btn:hover {
+      transform: translateY(-4px) scale(1.08);
+      box-shadow: 0 14px 34px var(--pink-glow);
+    }
+
+    /* ============================================
+       13. FOOTER
+       ============================================ */
+    footer { padding: 50px 0 60px; }
+
+    .footer-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 26px;
+      text-align: center;
+    }
+
+    .footer-text {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 0.92rem;
+      color: var(--text-soft);
+    }
+
+    .footer-heart {
+      color: var(--red-soft);
+      display: inline-block;
+      animation: heartbeat 1.6s ease-in-out infinite;
+    }
+
+    @keyframes heartbeat {
+      0%, 100% { transform: scale(1); }
+      50%      { transform: scale(1.25); }
+    }
+
+    /* ============================================
+       14. SCROLL-REVEAL ANIMATION
+       ============================================ */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ============================================
+       15. RESPONSIVE MEDIA QUERIES
+       ============================================ */
+    @media (max-width: 860px) {
+      .hero-inner { grid-template-columns: 1fr; text-align: center; row-gap: 36px; }
+      .hero-headline, .hero-buttons, .social-row { justify-content: center; }
+      .about-grid, .contact-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 700px) {
+      .nav-links { display: none; }
+      .nav-toggle { display: flex; }
+    }
+
+    @media (max-width: 480px) {
+      .hero-photo, .hero-photo-wrap { width: 180px; height: 180px; }
+      .btn { width: 100%; justify-content: center; }
+      .hero-buttons { width: 100%; flex-direction: column; }
+      .about-main, .side-card, .project-card, .contact-info-card, .contact-form { padding: 26px; }
+      :root { --section-pad: 48px; }
+      .scroll-top-btn { bottom: 18px; right: 18px; width: 46px; height: 46px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="bg-blobs" aria-hidden="true">
+    <span></span><span></span><span></span><span></span>
+  </div>
+
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a href="#home" class="nav-logo">
+        <i class="fa-solid fa-heart"></i> Izienne
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home" class="nav-link" data-section="home">Home</a></li>
+        <li><a href="#about" class="nav-link" data-section="about">About</a></li>
+        <li><a href="#projects" class="nav-link" data-section="projects">Projects</a></li>
+        <li><a href="#contact" class="nav-link" data-section="contact">Contact</a></li>
+        <li>
+          <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+            <i class="fa-solid fa-sun"></i>
+            <i class="fa-solid fa-moon"></i>
+          </button>
+        </li>
+      </ul>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <div class="mobile-menu-inner">
+        <a href="#home" class="mobile-link" data-section="home">Home</a>
+        <a href="#about" class="mobile-link" data-section="about">About</a>
+        <a href="#projects" class="mobile-link" data-section="projects">Projects</a>
+        <a href="#contact" class="mobile-link" data-section="contact">Contact</a>
+        <a href="#" id="mobileThemeToggle">
+          <i class="fa-solid fa-circle-half-stroke"></i> Toggle Twilight Mode
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="hero" id="home">
+    <div class="container hero-inner">
+      <div class="hero-photo-wrap">
+        <img src="img/profile.png" alt="Photo of Izienne Kyle B. Dael" class="hero-photo">
+      </div>
+      <div class="hero-text">
+        <p class="eyebrow"><i class="fa-solid fa-sparkles"></i> Hello, I'm</p>
+        <h1 class="hero-name">Izienne Kyle B. <span class="accent">Dael</span></h1>
+        <p class="hero-headline">
+          <span class="typing-text" id="typingText"></span><span class="typing-cursor"></span>
+        </p>
+        <div class="hero-buttons">
+          <a href="#projects" class="btn btn-primary">
+            <i class="fa-solid fa-wand-magic-sparkles"></i> View My Projects
+          </a>
+          <a href="#" class="btn btn-outline" download>
+            <i class="fa-solid fa-download"></i> Download CV
+          </a>
+        </div>
+        <div class="social-row" aria-label="Social media links">
+          <a href="https://github.com/puppq-bsit-iziennekylebdael" class="social-icon" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github"></i></a>
+          <a href="https://www.youtube.com/@izendael" class="social-icon" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-youtube"></i></a>
+          <a href="https://linkedin.com/in/izienne-kyle-dael-290207353" class="social-icon" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="https://instagram.com/znnkyl" class="social-icon" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-instagram"></i></a>
+          <a href="https://tiktok.com/@znnkyl" class="social-icon" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-tiktok"></i></a>
+          <a href="https://facebook.com/kate.dael.2025" class="social-icon" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-facebook-f"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="eyebrow"><i class="fa-solid fa-seedling"></i> Get to know me</p>
+        <h2 class="section-title">About Me</h2>
+        <p class="section-intro">A little peek into who I am, what I'm studying, and where I'm headed next.</p>
+      </div>
+      <div class="about-grid">
+        <div class="card about-main reveal">
+          <p>I am a <strong>second-year BSIT student</strong> at the <strong>Polytechnic University of the Philippines &mdash; Para&ntilde;aque</strong>.</p>
+          <p>My experience and interests span across both frontend development and backend logic. Beyond coding, my academic focus heavily centers on <strong>Human-Computer Interaction</strong>, <strong>Smart Infrastructure</strong>, and visual <strong>Modeling &amp; Simulation</strong>.</p>
+          <h3>Tech Stack</h3>
+          <div class="tech-stack">
+            <span class="tech-pill tech-red"><i class="devicon-cplusplus-plain"></i> C++</span>
+            <span class="tech-pill tech-yellow"><i class="devicon-html5-plain"></i> HTML</span>
+            <span class="tech-pill tech-green"><i class="devicon-css3-plain"></i> CSS</span>
+            <span class="tech-pill tech-yellow"><i class="devicon-javascript-plain"></i> JavaScript</span>
+            <span class="tech-pill tech-green"><i class="devicon-python-plain"></i> Python</span>
+          </div>
+          <h3>Academic Focus</h3>
+          <div class="tag-list">
+            <span class="tag tag-red">Human-Computer Interaction</span>
+            <span class="tag tag-yellow">Smart Infrastructure</span>
+            <span class="tag tag-green">Modeling &amp; Simulation</span>
+          </div>
+        </div>
+        <div class="side-stack">
+          <div class="card side-card reveal">
+            <h3><i class="fa-solid fa-route"></i> 5-Year Roadmap</h3>
+            <ol class="roadmap-list">
+              <li><span class="roadmap-num">1</span> Graduate with a Bachelor of Science in Information Technology (BSIT) degree.</li>
+              <li><span class="roadmap-num">2</span> Earn technical IT certifications to strengthen my profile.</li>
+              <li><span class="roadmap-num">3</span> Secure an entry-level IT role and start growing my career in tech.</li>
+            </ol>
+          </div>
+          <div class="card side-card reveal">
+            <h3><i class="fa-solid fa-star"></i> Fun Facts</h3>
+            <ul class="fact-list">
+              <li><i class="fa-solid fa-music"></i> When I'm not coding, you'll probably find me dancing.</li>
+              <li><i class="fa-solid fa-volleyball"></i> I love playing dodgeball with friends.</li>
+              <li><i class="fa-solid fa-book-open"></i> I enjoy reading web novels in my downtime.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="eyebrow"><i class="fa-solid fa-folder-open"></i> My Work</p>
+        <h2 class="section-title">Featured Projects</h2>
+        <p class="section-intro">A few academic and personal projects I've enjoyed building.</p>
+      </div>
+      <div class="project-grid">
+        <div class="card project-card reveal">
+          <div class="project-icon"><i class="fa-solid fa-address-book"></i></div>
+          <h3>Contact Management System</h3>
+          <p>A comprehensive system built in C++ featuring automated mobile number validation and duplicate data prevention to ensure clean and secure contact records.</p>
+          <div class="project-tags">
+            <span class="project-tag tag-red">C++</span>
+            <span class="project-tag tag-yellow">Data Validation</span>
+            <span class="project-tag tag-green">Academic</span>
+          </div>
+          <div class="project-actions">
+            <a href="https://github.com/puppq-bsit-iziennekylebdael" class="btn-chip btn-chip-code" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github"></i> View Code</a>
+            <a href="https://github.com/puppq-bsit-iziennekylebdael" class="btn-chip btn-chip-demo" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo</a>
+          </div>
+        </div>
+        <div class="card project-card reveal">
+          <div class="project-icon"><i class="fa-solid fa-water"></i></div>
+          <h3>Ilog ng Para&ntilde;aque Simulation</h3>
+          <p>A visual modeling and simulation concept aimed at proposing smart infrastructure and waste management solutions for the local waterways in Para&ntilde;aque.</p>
+          <div class="project-tags">
+            <span class="project-tag tag-green">Modeling &amp; Simulation</span>
+            <span class="project-tag tag-red">Smart Infrastructure</span>
+            <span class="project-tag tag-yellow">Concept</span>
+          </div>
+          <div class="project-actions">
+            <a href="https://github.com/puppq-bsit-iziennekylebdael" class="btn-chip btn-chip-code" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github"></i> View Code</a>
+            <a href="https://github.com/puppq-bsit-iziennekylebdael" class="btn-chip btn-chip-demo" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo</a>
+          </div>
+        </div>
+        <div class="card project-card reveal">
+          <div class="project-icon"><i class="fa-solid fa-seedling"></i></div>
+          <h3>NSTP Urban Agriculture Project</h3>
+          <p>Documentation and practical application of urban agriculture concepts for the National Service Training Program (NSTP).</p>
+          <div class="project-tags">
+            <span class="project-tag tag-yellow">NSTP</span>
+            <span class="project-tag tag-green">Documentation</span>
+            <span class="project-tag tag-red">Sustainability</span>
+          </div>
+          <div class="project-actions">
+            <a href="https://github.com/puppq-bsit-iziennekylebdael" class="btn-chip btn-chip-code" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github"></i> View Code</a>
+            <a href="https://github.com/puppq-bsit-iziennekylebdael" class="btn-chip btn-chip-demo" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="eyebrow"><i class="fa-solid fa-envelope-open-text"></i> Let's Connect</p>
+        <h2 class="section-title">Get In Touch</h2>
+        <p class="section-intro">Have a question, an opportunity, or just want to say hi? I'd love to hear from you.</p>
+      </div>
+      <div class="contact-grid">
+        <div class="card contact-info-card reveal">
+          <h3>Direct Contact</h3>
+          <a href="mailto:iziennedael@gmail.com" class="contact-link">
+            <i class="fa-solid fa-envelope"></i>
+            <span><span class="label">Email</span><span class="value">iziennedael@gmail.com</span></span>
+          </a>
+          <hr class="contact-divider">
+          <a href="tel:09126824414" class="contact-link">
+            <i class="fa-solid fa-phone"></i>
+            <span><span class="label">Phone</span><span class="value">0912 682 4414</span></span>
+          </a>
+          <hr class="contact-divider">
+          <a href="https://github.com/puppq-bsit-iziennekylebdael" class="contact-link" target="_blank" rel="noopener noreferrer">
+            <i class="fa-brands fa-github"></i>
+            <span><span class="label">GitHub</span><span class="value">puppq-bsit-iziennekylebdael</span></span>
+          </a>
+        </div>
+
+        <form class="card contact-form reveal" id="contactForm" action="https://api.web3forms.com/submit" method="POST">
+          <h3>Send a Message</h3>
+          
+          <input type="hidden" name="access_key" value="eb76e59e-3b74-4bfb-bdeb-861d016de575">
+          <input type="hidden" name="subject" value="New message from portfolio site">
+
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" placeholder="Your name" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="you@example.com" required>
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" placeholder="Type your message here..." required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary form-submit">
+            <i class="fa-solid fa-paper-plane"></i> Send Message
+          </button>
+          <p class="form-status" id="formStatus" aria-live="polite"></p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container footer-inner">
+      <div class="social-row" aria-label="Social media links">
+        <a href="https://github.com/puppq-bsit-iziennekylebdael" class="social-icon" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github"></i></a>
+        <a href="https://www.youtube.com/@izendael" class="social-icon" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-youtube"></i></a>
+        <a href="https://linkedin.com/in/izienne-kyle-dael-290207353" class="social-icon" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-linkedin-in"></i></a>
+        <a href="https://instagram.com/znnkyl" class="social-icon" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://tiktok.com/@znnkyl" class="social-icon" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-tiktok"></i></a>
+        <a href="https://facebook.com/kate.dael.2025" class="social-icon" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-facebook-f"></i></a>
+      </div>
+      <p class="footer-text">&copy; 2026 Izienne Kyle B. Dael. Made with <span class="footer-heart"><i class="fa-solid fa-heart"></i></span></p>
+    </div>
+  </footer>
+
+  <button class="scroll-top-btn" id="scrollTopBtn" aria-label="Scroll back to top"><i class="fa-solid fa-arrow-up"></i></button>
+
+  <script>
+    /* ================================================
+       1. DYNAMIC TYPING EFFECT
+       ================================================ */
+    const typingTextEl = document.getElementById('typingText');
+    const roles = ['BSIT Student', 'Programmer', 'Web Developer'];
+    let roleIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+
+    function typeLoop() {
+      const currentRole = roles[roleIndex];
+      if (!isDeleting) {
+        charIndex++;
+        typingTextEl.textContent = currentRole.substring(0, charIndex);
+        if (charIndex === currentRole.length) {
+          isDeleting = true;
+          setTimeout(typeLoop, 1400);
+          return;
+        }
+        setTimeout(typeLoop, 90);
+      } else {
+        charIndex--;
+        typingTextEl.textContent = currentRole.substring(0, charIndex);
+        if (charIndex === 0) {
+          isDeleting = false;
+          roleIndex = (roleIndex + 1) % roles.length;
+          setTimeout(typeLoop, 400);
+          return;
+        }
+        setTimeout(typeLoop, 45);
+      }
+    }
+    typeLoop();
+
+    /* ================================================
+       2. TWILIGHT DARK MODE TOGGLE
+       ================================================ */
+    const themeToggle = document.getElementById('themeToggle');
+    const mobileThemeToggle = document.getElementById('mobileThemeToggle');
+    const bodyEl = document.body;
+
+    try {
+      if (localStorage.getItem('izienne-theme') === 'dark') {
+        bodyEl.classList.add('dark-mode');
+      }
+    } catch (e) {}
+
+    function toggleTheme() {
+      bodyEl.classList.toggle('dark-mode');
+      try {
+        localStorage.setItem('izienne-theme', bodyEl.classList.contains('dark-mode') ? 'dark' : 'light');
+      } catch (e) {}
+    }
+    themeToggle.addEventListener('click', toggleTheme);
+    mobileThemeToggle.addEventListener('click', (e) => { e.preventDefault(); toggleTheme(); });
+
+    /* ================================================
+       3. MOBILE NAVIGATION TOGGLE
+       ================================================ */
+    const navToggle = document.getElementById('navToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    navToggle.addEventListener('click', () => {
+      const isOpen = mobileMenu.classList.toggle('is-open');
+      navToggle.setAttribute('aria-expanded', isOpen);
+    });
+
+    document.querySelectorAll('.mobile-link').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.remove('is-open');
+        navToggle.setAttribute('aria-expanded', false);
+      });
+    });
+
+    /* ================================================
+       4. ACTIVE NAVIGATION STATE ON SCROLL
+       ================================================ */
+    const sections = document.querySelectorAll('section[id]');
+    const navLinkEls = document.querySelectorAll('.nav-link, .mobile-link');
+
+    const navObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.getAttribute('id');
+          navLinkEls.forEach(link => {
+            link.classList.toggle('active', link.dataset.section === id);
+          });
+        }
+      });
+    }, { rootMargin: '-45% 0px -45% 0px' });
+
+    sections.forEach(sec => navObserver.observe(sec));
+
+    /* ================================================
+       5. SCROLL REVEAL ANIMATIONS
+       ================================================ */
+    const revealEls = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    revealEls.forEach(el => revealObserver.observe(el));
+
+    /* ================================================
+       6. SCROLL-TO-TOP BUTTON
+       ================================================ */
+    const scrollTopBtn = document.getElementById('scrollTopBtn');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 400) {
+        scrollTopBtn.classList.add('is-visible');
+      } else {
+        scrollTopBtn.classList.remove('is-visible');
+      }
+    });
+    scrollTopBtn.addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+
+    /* ================================================
+       7. CONTACT FORM SUBMISSION FEEDBACK
+       ================================================ */
+    const contactForm = document.getElementById('contactForm');
+    const formStatus = document.getElementById('formStatus');
+
+    contactForm.addEventListener('submit', () => {
+      formStatus.textContent = '💌 Sending your message...';
+    });
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login — Portfolio Portal</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=Quicksand:wght@700&display=swap">
+  <style>
+    body { background-color: #fdf3ee; font-family: 'Nunito', sans-serif; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
+    .auth-card { background: white; padding: 40px; border-radius: 24px; box-shadow: 0 10px 30px rgba(232, 99, 92, 0.1); width: 100%; max-width: 400px; text-align: center; }
+    h2 { font-family: 'Quicksand', sans-serif; color: #5a4a47; margin-bottom: 8px; }
+    p { color: #9c8580; font-size: 0.9rem; margin-bottom: 24px; }
+    .input-group { text-align: left; margin-bottom: 18px; }
+    label { display: block; font-size: 0.85rem; font-weight: 700; color: #5a4a47; margin-bottom: 6px; }
+    input { width: 100%; padding: 12px 16px; border: 1px solid #fbe7e2; border-radius: 12px; font-size: 0.95rem; outline: none; box-sizing: border-box; }
+    input:focus { border-color: #e8635c; }
+    .btn-submit { background: #e8635c; color: white; width: 100%; border: none; padding: 14px; border-radius: 12px; font-weight: 700; cursor: pointer; transition: background 0.2s; margin-top: 10px; }
+    .btn-submit:hover { background: #d44d47; }
+    .switch-prompt { font-size: 0.85rem; color: #9c8580; margin-top: 20px; }
+    .switch-prompt a { color: #e8635c; text-decoration: none; font-weight: 700; }
+  </style>
+</head>
+<body>
+  <div class="auth-card">
+    <h2>Welcome Back</h2>
+    <p>Sign in to view extended portfolio project models</p>
+    <form>
+      <div class="input-group">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" placeholder="you@example.com" required>
+      </div>
+      <div class="input-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="••••••••" required>
+      </div>
+      <button type="submit" class="btn-submit">Sign In</button>
+    </form>
+    <div class="switch-prompt">Don't have an account? <a href="signup.html">Sign Up</a></div>
+  </div>
+
+  </script>
+</body>
+</html>

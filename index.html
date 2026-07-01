@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Izienne Kyle B. Dael — Portfolio</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/devicon.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2 family=Nunito:wght@400;500;600;700;800&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="galaxy-container">
+    <div class="stars small-stars"></div>
+    <div class="stars medium-stars"></div>
+    <div class="stars large-stars"></div>
+    <div class="nebula-cloud"></div>
+  </div>
+
+  <div class="bg-blobs">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-logo">
+        <i class="fa-solid ba-code"></i> Izienne.html
+      </a>
+      <ul class="nav-links">
+        <li><a href="#hero" class="nav-link active">Home</a></li>
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#projects" class="nav-link">Projects</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+        <li><a href="login.html" class="btn-login"><i class="fa-solid fa-user-lock"></i> Login</a></li>
+        <li>
+          <button class="theme-toggle" id="themeToggleBtn" aria-label="Toggle Theme">
+            <i class="fa-solid fa-sun"></i>
+            <i class="fa-solid fa-moon"></i>
+          </button>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <section id="about">
+    <div class="container">
+      <div class="about-wrapper">
+        <div class="about-main">
+          <p>
+            I am a second-year BSIT student at Polytechnic University of the Philippines Parañaque. I major in building optimized systems, interface designs using advanced Human-Computer Interaction (HCI) concepts, and robust application flows. **Always open to freelance projects and creative collaborations.**
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow"><i class="fa-solid fa-folder-open"></i> My Works</span>
+        <h2 class="section-title">Featured Projects</h2>
+        <p class="section-intro">Here is a showcase of my recent academic, infrastructure, and socio-civic initiatives.</p>
+      </div>
+
+      <div class="projects-grid">
+        <div class="project-card reveal">
+          <div class="project-icon"><i class="fa-solid fa-seedling"></i></div>
+          <h3>NSTP Urban Agriculture & Sustainability</h3>
+          <p>A sustainability project focused on cultivating localized green spaces and zero-waste habits through structured urban farming and seed planting initiatives.</p>
+          <div class="project-tags">
+            <span>Sustainability</span>
+            <span>Community</span>
+            <span>Zero-Waste</span>
+          </div>
+        </div>
+
+        <div class="project-card reveal">
+          <div class="project-icon"><i class="fa-solid fa-hand-holding-heart"></i></div>
+          <h3>Kalinga ng Iskolar Campaign</h3>
+          <p>Organized community donation drive for the children at Bahay Aruga. Successfully collected educational books, toys, clothes, and essential medical/hygiene support packages.</p>
+          <div class="project-tags">
+            <span>Social Welfare</span>
+            <span>Donation Drive</span>
+            <span>Logistics</span>
+          </div>
+        </div>
+
+        <div class="project-card reveal">
+          <div class="project-icon"><i class="fa-solid fa-recycle"></i></div>
+          <h3>Project RePUPose: Bote Mo, Responsibilidad Mo</h3>
+          <p>An eco-focused waste reduction initiative advocating standard localized recycling principles (Reduce, Reuse, Recycle) to address environmental issues systematically.</p>
+          <div class="project-tags">
+            <span>Recycling</span>
+            <span>Eco-System</span>
+            <span>Action Plan</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
